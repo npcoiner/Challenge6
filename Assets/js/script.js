@@ -25,7 +25,10 @@ var formSubmitHandler = function (e) {
     }
 };
 
-
+//This function takes a city input and gets the relavent latitude and longitude information
+//Afterwards, it calls displayWeatherData with the information
+//The formatting of this function avoids async/await by using .then() instead
+//Promises are very useful for clean code, but can sometimes lead to harder logical understanding
 function getCityWeather(city){
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid="+apiKey;
     console.log(apiUrl);
@@ -50,9 +53,10 @@ function getCityWeather(city){
     })
 }   
 
-
+//This code displays the weather data from getCityWeather.
+//Should only be called from getCityWeather
 function displayWeatherData(city){
-    
+
 }
 
 citySearchFormEl.addEventListener('submit', formSubmitHandler);
