@@ -25,20 +25,30 @@ var formSubmitHandler = function (e) {
     }
 };
 
-function getCityWeather(city){
-    lat,lon = getLatLon(city);
-    apiUrl = 'api.openweathermap.org/data/2.5/forecast?lat='+lat+'&'+lon+'={lon}&appid='+apiKey
-};
 
-function getLatLon(city){
+function getCityWeather(city){
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid="+apiKey;
-    var data = fetch(apiUrl).then(function(response) {
+    console.log(apiUrl);
+    fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function (data){
-                console.log(data);
+                var city=  data[0];
+                var apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?lat='+city.lat+'&lon='+city.lon+'&appid='+apiKey;
+                fetch(apiUrl2).then(function(nestedResponse){
+                    if (nestedResponse.ok) {
+                        nestedResponse.json().then(function (data2){
+                            displayWeatherData(data2);
+                        })
+                      } else {
+                        alert('Error: ' + nestedResponse.statusText);
+                      }
+                })
             })
           } else {
             alert('Error: ' + response.statusText);
           }
     })
 }   
+
+
+citySearchFormEl.addEventListener('submit', formSubmitHandler);
