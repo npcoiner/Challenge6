@@ -32,9 +32,11 @@ function getCityWeather(city){
 
 function getLatLon(city){
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid="+apiKey;
-    fetch(apiUrl).then(function(response) {
+    var data = fetch(apiUrl).then(function(response) {
         if (response.ok) {
-            return response.json();
+            response.json().then(function (data){
+                console.log(data);
+            })
           } else {
             alert('Error: ' + response.statusText);
           }
