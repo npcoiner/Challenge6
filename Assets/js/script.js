@@ -51,4 +51,8 @@ function getCityWeather(city){
 }   
 
 
+function displayWeatherData(city){
+    
+}
+
 citySearchFormEl.addEventListener('submit', formSubmitHandler);
