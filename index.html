@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <title>5 Day Weather Forcast</title>
 </head>
 
@@ -31,12 +32,30 @@
         <button type="submit" class="btn">Get Weather</button>
         </form>
     </div>
-
+    <div class="card">
+        <h3 class="card-header text-uppercase">Search By Topic</h3>
+        <div id="search-history" class="card-body">
+          <button data-city="Cupertino" class="btn">Cupertino</button>
+        </div>
+    </div>
     </div>
 
     <div class="col-12 col-md-8">
     <h2 class="subtitle">Search Results: <span id="weather-search-term"></span></h2>
     <div id="weather-container" class="list-group"></div>
+
+    <div class="card">
+        <h3 id="city-name" class="card-header text-uppercase">Cupertino</h3>
+        <div id="weather-data" class="card-body">
+            <div class="card">
+                <h3 id="day-1" class="card-header text-uppercase weather-day">Day-1</h3>
+                <div id="search-history" class="card-body">
+                  <div class="form-label">Sunny</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     </div>
 </main>
 
