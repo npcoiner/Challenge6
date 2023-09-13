@@ -3,6 +3,7 @@ const apiKey = '351db7d80cbf2a3105ea63d048543c3b';
 
 var citySearchFormEl = document.querySelector("#city-search-form");
 var cityInputEl = document.querySelector('#city');
+var searchHistoryEl = document.querySelector("#search-history");
 
 
 var weatherContainerEl = document.querySelector('#weather-container');
@@ -61,25 +62,26 @@ function getCityWeather(city){
 //Should only be called from getCityWeather
 function displayWeatherData(data){
     cityNameEl.html(data.city.name);
-    console.log("HELLO?????"+ cityNameEl.text());
     weatherData.html("");
     var htmlString = "";
     var day = 0;
     var dayData = null;
-    for (var i = 7; i < 47; i += 8) {
+    for (var i = 0; i < 40; i += 8) {
         dayData = data.list[i];
         day++;
 
         htmlString += `
+        <div class="card">
         <h3 class='card-header text-uppercase weather-day'>
         Day `+day+`
         </h3>
         <div class='card-body'>
-        <div class='form-label'>Date&Time: `+dayData.sys.dt_txt+`</div>
-        <div class='form-label'>Weather: `+dayData.weather[0].main+`</div>
-        <div class='form-label'>Temp: `+dayData.main.temp+`</div>
-        <div class='form-label'>`+1+`</div>
-        <div class='form-label'>`+1+`</div>
+        <img src="https://openweathermap.org/img/wn/`+dayData.weather[0].icon+`.png"></img>
+        <div class='form-label'>`+dayData.weather[0].main+`</div>
+        <div class='form-label'>Temperature: `+dayData.main.temp+` F</div>
+        <div class='form-label'>Humidity: `+dayData.main.humidity+`</div>
+        <div class='form-label'>Wind: `+dayData.wind.speed+`</div>
+        </div>
         </div>
         `;
     }
